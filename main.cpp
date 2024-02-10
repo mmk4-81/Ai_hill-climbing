@@ -14,6 +14,14 @@ using namespace std::chrono;
 #define BOY2 1
 #define GIRL 2
 
+void printDistribution(double* Lands, int* distribution, int DataSize) {
+    cout << "\nNote: boy1 => 0  **** boy2 => 1  **** girl => 2\n";
+    cout << "\nOptimal Distribution:\n\n";
+    for (int i = 0; i < DataSize; i++) {
+        cout << i << " = " << Lands[i] << " => " << distribution[i] << "  \n";
+    }
+}
+
 double RandomFunction(double sum[3], double *Lands, int *distributionResult, int DataSize, double totalLands)
 {
     mt19937 generator(chrono::high_resolution_clock::now().time_since_epoch().count());
