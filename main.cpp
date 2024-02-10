@@ -14,6 +14,17 @@ using namespace std::chrono;
 #define BOY2 1
 #define GIRL 2
 
+double RandomFunction(double sum[3], double* Lands, int* distributionResult, int DataSize, double totalLands) {
+    mt19937 generator(chrono::high_resolution_clock::now().time_since_epoch().count());
+    uniform_int_distribution<int> distribution(0, 2);
+    for (int i = 0; i < DataSize; i++) {
+        int randomindex = distribution(generator);
+        sum[randomindex] += Lands[i];
+        distributionResult[i] = randomindex;
+    }
+    return abs(sum[BOY1] - 0.4 * totalLands) + abs(sum[BOY2] - 0.4 * totalLands) + abs(sum[GIRL] - 0.2 * totalLands);
+}
+
 void hillClimbing(double* Lands, double runtime, int DataSize, double totalLands) {
      double idealboy1 = totalLands / 5 * 2;
     double idealboy2 = totalLands / 5 * 2;
