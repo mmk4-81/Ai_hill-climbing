@@ -44,6 +44,11 @@ void hillClimbing(double* Lands, double runtime, int DataSize, double totalLands
 
     double* sum = new double[3]{ 0, 0, 0 };
     double* bestsum = new double[3]{ 0, 0, 0 };
+     double currentDiff = RandomFunction(sum, Lands, CurrentDistribution, DataSize, totalLands);
+    cout << currentDiff << endl;
+    double bestDiff = currentDiff;
+    double localmin = currentDiff ;
+    double minbestDiff = currentDiff;
 
 }
 
