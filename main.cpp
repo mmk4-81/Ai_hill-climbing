@@ -124,6 +124,16 @@ void hillClimbing(double *Lands, double runtime, int DataSize, double totalLands
         if (elapsed_time >= runtime)
             break;
     }
+
+    cout << "Optimal F: " << minbestDiff << endl;
+    //printDistribution(Lands, bestDistribution, DataSize);
+    cout << fixed << setprecision(4); 
+    cout << "sum boy1 => " << bestsum[0]<< " , sum boy2 => " << bestsum[1] << " , sum girl => " << bestsum[2] << std::endl;
+
+    delete[] CurrentDistribution;
+    delete[] sum;
+   // delete[] bestDistribution;
+    //delete[] bestsum;
 }
 
 int main()
