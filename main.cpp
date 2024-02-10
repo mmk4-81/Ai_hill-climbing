@@ -50,6 +50,37 @@ void hillClimbing(double* Lands, double runtime, int DataSize, double totalLands
     double localmin = currentDiff ;
     double minbestDiff = currentDiff;
 
+     while (true) {
+        for (int j = 0; j < DataSize; j++) {
+
+            int originalValue = CurrentDistribution[j];
+
+            if (sum[originalValue] > ideal[originalValue]) {
+
+                for (int newValue = 0; newValue <= 2; newValue++) {
+
+                    if (newValue == originalValue)
+                        continue;
+
+                    if (sum[newValue] < ideal[newValue]) {
+                        sum[newValue] += Lands[j];
+                        sum[originalValue] -= Lands[j];
+
+                        double neighborDiff = abs(sum[BOY1] - 0.4 * totalLands) + abs(sum[BOY2] - 0.4 * totalLands) + abs(sum[GIRL] - 0.2 * totalLands);
+
+                        if (neighborDiff <= bestDiff) {
+                            bestDiff = neighborDiff;
+                            CurrentDistribution[j] = newValue;
+                        }
+                        else {
+                            sum[newValue] -= Lands[j];
+                            sum[originalValue] += Lands[j];
+                        }
+                    }
+                }
+            }
+        }
+
 }
 
 int main()
